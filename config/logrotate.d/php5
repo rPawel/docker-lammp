@@ -1,0 +1,14 @@
+/var/log/php5/php-errors.log {
+        rotate 7
+        daily
+        missingok
+        notifempty
+        compress
+        delaycompress
+        create 644 www-data adm
+        postrotate
+                if /etc/init.d/apache2 status > /dev/null ; then \
+                    /etc/init.d/apache2 reload > /dev/null; \
+                fi;
+        endscript
+}
