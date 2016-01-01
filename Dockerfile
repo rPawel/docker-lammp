@@ -11,7 +11,7 @@ RUN apt-get -q -y update \
   imagemagick graphicsmagick graphicsmagick-libmagick-dev-compat php5-imagick trimage \
   exim4 git subversion \
 # Config
- && a2enmod actions alias headers deflate rewrite \
+ && a2enmod actions alias headers deflate rewrite remoteip \
  && a2dismod autoindex \
  && a2disconf other-vhosts-access-log \
  && pecl install memcache \
