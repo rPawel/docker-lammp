@@ -13,7 +13,6 @@ RUN apt-get -q -y update \
 
 # Config
 ADD ./config /etc/
-
 RUN update-exim4.conf \
  && a2enmod actions alias headers deflate rewrite remoteip \
  && a2dismod autoindex \
@@ -23,4 +22,3 @@ RUN update-exim4.conf \
  && mkdir -p /var/log/php5; chmod 775 /var/log/php5; chown www-data:www-data /var/log/php5/ \
  && mkdir -p /var/log/supervisor \
  && DEBIAN_FRONTEND=newt
-

@@ -1,2 +1,2 @@
-docker-lamp
+docker-lammp
 =============
