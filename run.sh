@@ -13,10 +13,10 @@ if [ ! -d /var/www/cron ]; then
     chmod 750 /var/www/cron
 fi
 rm -rf /home; ln -s /var/www/app /home
-mkdir -p /var/log/php5 /var/log/apache2
-chmod 775 /var/log/php5 /var/log/apache2
-find /var/log/php5 /var/log/apache2 -type f -exec chmod 644 {} \;
-chown -R user:www-data /var/log/php5 /var/log/apache2
+mkdir -p /var/log/php /var/log/apache2
+chmod 775 /var/log/php /var/log/apache2
+find /var/log/php /var/log/apache2 -type f -exec chmod 644 {} \;
+chown -R user:www-data /var/log/php /var/log/apache2
 
 cp -ar ${PERSISTENT_CONFIG_FOLDER}/* ${VOLATILE_CONFIG_FOLDER}
 
