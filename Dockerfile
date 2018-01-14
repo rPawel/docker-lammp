@@ -19,7 +19,6 @@ RUN update-exim4.conf \
  && a2dismod -f autoindex \
  && a2disconf other-vhosts-access-log \
  && useradd -d /var/www/app --no-create-home --shell /bin/bash -g www-data -G adm user \
- && mkdir -p /var/log/app; chmod 775 /var/log/app/; chown user:www-data /var/log/app/ \
  && mkdir -p /var/log/php; chmod 775 /var/log/php; chown www-data:www-data /var/log/php/ \
  && mkdir -p /var/log/supervisor \
  && DEBIAN_FRONTEND=newt
