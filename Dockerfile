@@ -7,10 +7,10 @@ RUN apt-get -q -y update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y -q apache2 libapache2-mod-php \
   php php-cli php-dev php-pear php-common php-apcu \
   php-mcrypt php-gd php-mysql php-curl php-json php-intl php-xsl php-ssh2 php-mbstring \
-  php-zip php-memcached php-memcache \
+  php-zip php-memcached php-memcache php-imap \
   imagemagick graphicsmagick graphicsmagick-libmagick-dev-compat php-imagick trimage \
   exim4 git subversion \
- && phpenmod mcrypt
+ && phpenmod mcrypt && phpenmod imap
 
 # Config
 ADD ./config /etc/
