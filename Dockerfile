@@ -1,20 +1,23 @@
 # runnable base
-FROM rpawel/ubuntu:xenial
+FROM rpawel/ubuntu:bionic
 
 RUN apt-get -q -y update \
  && apt-get dist-upgrade -y --no-install-recommends \
 # Packages
  && DEBIAN_FRONTEND=noninteractive apt-get install -y -q apache2 libapache2-mod-php \
   php php-cli php-dev php-pear php-common php-apcu \
-  php-mcrypt php-gd php-mysql php-curl php-json php-intl php-xsl php-ssh2 php-mbstring \
+  php-gd php-mysql php-curl php-json php-intl php-xsl php-ssh2 php-mbstring \
   php-zip php-memcached php-memcache php-imap \
   imagemagick graphicsmagick graphicsmagick-libmagick-dev-compat php-imagick trimage \
+  libmcrypt-dev libmcrypt4 \
   exim4 git subversion \
- && phpenmod mcrypt && phpenmod imap
+ && pecl install mcrypt-1.0.1 \
+ && phpenmod imap && phpdismod xdebug
 
 # Config
 ADD ./config /etc/
 RUN update-exim4.conf \
+ && phpenmod mcrypt \
  && a2enmod actions alias headers deflate rewrite remoteip \
  && a2dismod -f autoindex \
  && a2disconf other-vhosts-access-log \
